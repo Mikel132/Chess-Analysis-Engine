@@ -334,24 +334,36 @@ bool is_in_check(const Board *board, Color color) {
     return false;
 }
 
-/* Check if a position is checkmate */
+/* Check if a position is checkmate 
+ * NOTE: This is a placeholder implementation that always returns false.
+ * A complete implementation would need to:
+ * 1. Verify the king is in check
+ * 2. Try all possible moves for the player
+ * 3. Check if any move gets out of check
+ * This is left as a future enhancement.
+ */
 bool is_checkmate(const Board *board, Color color) {
     if (!is_in_check(board, color)) {
         return false;
     }
     
-    /* Try all possible moves to see if any gets out of check */
-    /* This is a simplified implementation */
-    return false;  /* Placeholder */
+    /* TODO: Implement full checkmate detection */
+    return false;
 }
 
-/* Check if a position is stalemate */
+/* Check if a position is stalemate
+ * NOTE: This is a placeholder implementation that always returns false.
+ * A complete implementation would need to:
+ * 1. Verify the king is NOT in check
+ * 2. Try all possible moves for the player
+ * 3. Check if there are no legal moves available
+ * This is left as a future enhancement.
+ */
 bool is_stalemate(const Board *board, Color color) {
     if (is_in_check(board, color)) {
         return false;
     }
     
-    /* Check if there are any legal moves */
-    /* This is a simplified implementation */
-    return false;  /* Placeholder */
+    /* TODO: Implement full stalemate detection */
+    return false;
 }
