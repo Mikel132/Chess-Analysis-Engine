@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include <math.h>
 
 /* Initialize the board with starting position */
 void init_board(Board *board) {
@@ -119,7 +120,8 @@ static bool is_valid_pawn_move(const Board *board, const Move *move) {
 }
 
 /* Check if a knight move is valid */
-static bool is_valid_knight_move(const Board *board __attribute__((unused)), const Move *move) {
+static bool is_valid_knight_move(const Board *board, const Move *move) {
+    (void)board;  /* Unused parameter */
     int row_diff = abs(move->to_row - move->from_row);
     int col_diff = abs(move->to_col - move->from_col);
     
@@ -189,15 +191,16 @@ static bool is_valid_queen_move(const Board *board, const Move *move) {
 }
 
 /* Check if a king move is valid */
-static bool is_valid_king_move(const Board *board __attribute__((unused)), const Move *move) {
+static bool is_valid_king_move(const Board *board, const Move *move) {
+    (void)board;  /* Unused parameter */
     int row_diff = abs(move->to_row - move->from_row);
     int col_diff = abs(move->to_col - move->from_col);
     
     return row_diff <= 1 && col_diff <= 1;
 }
 
-/* Check if a move is valid according to piece rules */
-bool is_valid_move(const Board *board, const Move *move) {
+/* Helper function to check if a move is valid according to piece rules, ignoring turn */
+static bool is_move_legal_for_piece(const Board *board, const Move *move) {
     /* Check positions are valid */
     if (!is_valid_position(move->from_row, move->from_col) ||
         !is_valid_position(move->to_row, move->to_col)) {
@@ -214,13 +217,8 @@ bool is_valid_move(const Board *board, const Move *move) {
         return false;
     }
     
-    /* Check it's the right player's turn */
-    Color piece_color = get_piece_color(move->piece);
-    if (piece_color != board->turn) {
-        return false;
-    }
-    
     /* Check destination */
+    Color piece_color = get_piece_color(move->piece);
     char target = board->squares[move->to_row][move->to_col];
     if (target != EMPTY) {
         Color target_color = get_piece_color(target);
@@ -248,6 +246,17 @@ bool is_valid_move(const Board *board, const Move *move) {
         default:
             return false;
     }
+}
+
+/* Check if a move is valid according to piece rules */
+bool is_valid_move(const Board *board, const Move *move) {
+    /* Check it's the right player's turn */
+    Color piece_color = get_piece_color(move->piece);
+    if (piece_color != board->turn) {
+        return false;
+    }
+    
+    return is_move_legal_for_piece(board, move);
 }
 
 /* Make a move on the board */
@@ -314,16 +323,10 @@ bool is_in_check(const Board *board, Color color) {
                     .captured = king
                 };
                 
-                /* Temporarily change turn to test move */
-                Color original_turn = board->turn;
-                ((Board *)board)->turn = get_piece_color(piece);
-                
-                if (is_valid_move(board, &test_move)) {
-                    ((Board *)board)->turn = original_turn;
+                /* Check if this piece can attack the king (ignoring turn) */
+                if (is_move_legal_for_piece(board, &test_move)) {
                     return true;
                 }
-                
-                ((Board *)board)->turn = original_turn;
             }
         }
     }

@@ -17,7 +17,7 @@ int col_to_index(char col) {
 /* Convert row number to index */
 int row_to_index(char row) {
     if (row >= '1' && row <= '8') {
-        return 8 - (row - '0');
+        return BOARD_SIZE - (row - '0');
     }
     return -1;
 }
@@ -33,7 +33,7 @@ char index_to_col(int col) {
 /* Convert index to row number */
 char index_to_row(int row) {
     if (row >= 0 && row < BOARD_SIZE) {
-        return '0' + (8 - row);
+        return '0' + (BOARD_SIZE - row);
     }
     return '?';
 }
