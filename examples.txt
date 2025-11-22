@@ -1,0 +1,65 @@
+Chess Analysis Engine - Example Game Sessions
+==============================================
+
+Example 1: Scholar's Mate Attempt
+----------------------------------
+move e2e4
+move e7e5
+move f1c4
+move b8c6
+move d1h5
+move g8f6
+move h5f7
+(Checkmate!)
+
+Example 2: Italian Game Opening
+--------------------------------
+move e2e4
+move e7e5
+move g1f3
+move b8c6
+move f1c4
+move f8c5
+move c2c3
+move g8f6
+
+Example 3: Queen's Pawn Opening
+--------------------------------
+move d2d4
+move d7d5
+move c2c4
+move e7e6
+move b1c3
+move g8f6
+
+Example 4: Basic Pawn Movement
+-------------------------------
+move e2e4    # White pawn advances two squares
+move e7e5    # Black pawn advances two squares
+move d2d4    # White pawn advances two squares
+move e5d4    # Black pawn captures white pawn
+move d1d4    # White queen captures black pawn
+
+Example 5: Knight Development
+------------------------------
+move g1f3    # White knight to f3
+move b8c6    # Black knight to c6
+move b1c3    # White knight to c3
+move g8f6    # Black knight to f6
+
+Example 6: Testing Invalid Moves
+---------------------------------
+move e2e5    # Invalid - pawn cannot move 3 squares (should fail)
+move e2e4    # Valid - pawn moves 2 squares
+move e4e5    # Invalid - not your turn (should fail)
+move e7e5    # Valid - black's turn
+
+Tips for Testing:
+-----------------
+1. Use the 'print' command to display the board anytime
+2. Use the 'check' command to see if the current player is in check
+3. Use the 'reset' command to start a new game
+4. Use the 'help' command to see all available commands
+5. Move format: <source><destination> (e.g., e2e4)
+   - Columns: a-h (left to right)
+   - Rows: 1-8 (bottom to top for white)

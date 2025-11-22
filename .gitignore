@@ -1,0 +1,23 @@
+# Build artifacts
+*.o
+*.exe
+*.out
+chess_engine
+main
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Build directory
+build/
+bin/
+
+# MacOS
+.DS_Store
+
+# Dependency files
+*.d
