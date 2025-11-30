@@ -1,0 +1,21 @@
+# Build directory
+build/
+_codeql_build_dir/
+
+# CodeQL artifacts
+_codeql_detected_source_root
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Compiled Object files
+*.o
+*.obj
+
+# Executables
+*.exe
+*.out
+chess-analysis
