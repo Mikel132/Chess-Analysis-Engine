@@ -175,26 +175,29 @@ bool parse_move(struct chess_move *move)
         c = getc(stdin);
 
         // Next could be: file (disambiguation or dest), rank (disambiguation), or 'x' (capture)
+        // Note: A character can only be a valid file (a-h) OR a valid rank (1-8), never both
         file = parse_file(c);
         rank = parse_rank(c);
 
         if (file >= 0)
         {
-            // Read a file - could be disambiguation or destination
+            // Read a file letter - could be disambiguation or start of destination
+            // Examples: "Nf3" -> 'f' is start of dest; "Rab1" -> 'a' is disambiguation
             c = getc(stdin);
+            // Check what follows the first file: could be rank, another file, or 'x'
             int next_rank = parse_rank(c);
             int next_file = parse_file(c);
 
             if (next_rank >= 0)
             {
-                // file + rank: could be full square (dest) or need to check further
+                // file + rank: could be full destination (e.g., "Nf3") or disambiguation (e.g., "Na3b5")
                 int saved_file = file;
                 int saved_rank = next_rank;
 
                 c = getc(stdin);
                 if (c == 'x')
                 {
-                    // Disambiguation was file+rank, capture follows
+                    // Full square disambiguation followed by capture (e.g., "Na3xb5")
                     move->from_file = saved_file;
                     move->from_rank = saved_rank;
                     move->is_capture = 1;
@@ -211,9 +214,10 @@ bool parse_move(struct chess_move *move)
                 }
                 else if (parse_file(c) >= 0)
                 {
-                    // Disambiguation was file+rank, destination file follows
+                    // Full square disambiguation followed by destination file (e.g., "Na3b5")
                     move->from_file = saved_file;
                     move->from_rank = saved_rank;
+                    // We know c is a valid file since we just checked it
                     move->to_file = parse_file(c);
                     c = getc(stdin);
                     rank = parse_rank(c);
@@ -223,7 +227,7 @@ bool parse_move(struct chess_move *move)
                 }
                 else
                 {
-                    // file + rank was the destination
+                    // file + rank was the destination (e.g., "Nf3")
                     ungetc(c, stdin);
                     move->to_file = saved_file;
                     move->to_rank = saved_rank;
@@ -231,7 +235,7 @@ bool parse_move(struct chess_move *move)
             }
             else if (c == 'x')
             {
-                // File disambiguation followed by capture
+                // File disambiguation followed by capture (e.g., "Naxe5")
                 move->from_file = file;
                 move->is_capture = 1;
                 c = getc(stdin);
@@ -247,7 +251,7 @@ bool parse_move(struct chess_move *move)
             }
             else if (next_file >= 0)
             {
-                // File disambiguation followed by destination file
+                // File disambiguation followed by destination file (e.g., "Rab1")
                 move->from_file = file;
                 move->to_file = next_file;
                 c = getc(stdin);
