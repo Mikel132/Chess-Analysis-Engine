@@ -1,3 +1,0 @@
-/home/runner/work/Chess-Analysis-Engine/Chess-Analysis-Engine/_codeql_build_dir/CMakeFiles/chess-analysis.dir
-/home/runner/work/Chess-Analysis-Engine/Chess-Analysis-Engine/_codeql_build_dir/CMakeFiles/edit_cache.dir
-/home/runner/work/Chess-Analysis-Engine/Chess-Analysis-Engine/_codeql_build_dir/CMakeFiles/rebuild_cache.dir

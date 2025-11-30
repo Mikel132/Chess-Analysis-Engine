@@ -1,5 +1,9 @@
 # Build directory
 build/
+_codeql_build_dir/
+
+# CodeQL artifacts
+_codeql_detected_source_root
 
 # IDE files
 .vscode/
