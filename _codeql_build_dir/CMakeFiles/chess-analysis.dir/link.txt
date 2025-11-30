@@ -1,0 +1,1 @@
+/home/runner/work/Chess-Analysis-Engine/.codeql-scratch/dbs/cpp/working/autobuild/bin/cc -O3 -DNDEBUG -Wl,--dependency-file=CMakeFiles/chess-analysis.dir/link.d "CMakeFiles/chess-analysis.dir/main.c.o" "CMakeFiles/chess-analysis.dir/board.c.o" "CMakeFiles/chess-analysis.dir/parser.c.o" "CMakeFiles/chess-analysis.dir/panic.c.o" -o chess-analysis  -lm
