@@ -1,16 +1,15 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/chess-analysis.dir/board.c.obj"
-  "CMakeFiles/chess-analysis.dir/board.c.obj.d"
-  "CMakeFiles/chess-analysis.dir/main.c.obj"
-  "CMakeFiles/chess-analysis.dir/main.c.obj.d"
-  "CMakeFiles/chess-analysis.dir/panic.c.obj"
-  "CMakeFiles/chess-analysis.dir/panic.c.obj.d"
-  "CMakeFiles/chess-analysis.dir/parser.c.obj"
-  "CMakeFiles/chess-analysis.dir/parser.c.obj.d"
-  "chess-analysis.exe"
-  "chess-analysis.exe.manifest"
+  "CMakeFiles/chess-analysis.dir/link.d"
+  "CMakeFiles/chess-analysis.dir/board.c.o"
+  "CMakeFiles/chess-analysis.dir/board.c.o.d"
+  "CMakeFiles/chess-analysis.dir/main.c.o"
+  "CMakeFiles/chess-analysis.dir/main.c.o.d"
+  "CMakeFiles/chess-analysis.dir/panic.c.o"
+  "CMakeFiles/chess-analysis.dir/panic.c.o.d"
+  "CMakeFiles/chess-analysis.dir/parser.c.o"
+  "CMakeFiles/chess-analysis.dir/parser.c.o.d"
+  "chess-analysis"
   "chess-analysis.pdb"
-  "libchess-analysis.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.

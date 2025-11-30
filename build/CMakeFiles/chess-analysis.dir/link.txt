@@ -1,3 +1,1 @@
-"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\chess-analysis.dir/objects.a
-C:\Users\joshd\Downloads\mingw64-13.1.0\mingw64\bin\ar.exe qc CMakeFiles\chess-analysis.dir/objects.a @CMakeFiles\chess-analysis.dir\objects1.rsp
-C:\Users\joshd\Downloads\mingw64-13.1.0\mingw64\bin\gcc.exe -g -Wl,--whole-archive CMakeFiles\chess-analysis.dir/objects.a -Wl,--no-whole-archive -o chess-analysis.exe -Wl,--out-implib,libchess-analysis.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\chess-analysis.dir\linkLibs.rsp
+/usr/bin/cc -Wl,--dependency-file=CMakeFiles/chess-analysis.dir/link.d "CMakeFiles/chess-analysis.dir/main.c.o" "CMakeFiles/chess-analysis.dir/board.c.o" "CMakeFiles/chess-analysis.dir/parser.c.o" "CMakeFiles/chess-analysis.dir/panic.c.o" -o chess-analysis  -lm
