@@ -1,0 +1,17 @@
+# Build directory
+build/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Compiled Object files
+*.o
+*.obj
+
+# Executables
+*.exe
+*.out
+chess-analysis
